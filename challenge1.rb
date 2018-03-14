@@ -40,6 +40,7 @@ def get_sum(a,b)
   return sum
 end
 
+puts get_sum(x,y)
 =begin
 
 # tests + explained
