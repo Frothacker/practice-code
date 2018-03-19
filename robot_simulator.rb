@@ -28,10 +28,10 @@ class Robot
   # starting coordinates and bearing 
   def place_at(x, y, direction)
     @position = [x.to_i, y.to_i]
-    @front = case direction.downcase  
+    @front = case direction.downcase.to_s  
       when "north"  then :north
-      when "south"  then :east
-      when "east"   then :south
+      when "south"  then :south
+      when "east"   then :east
       when "west"   then :west
       end
     puts "position is: #{@position} direction is #{@front}"
@@ -73,22 +73,23 @@ class Robot
 
   def advance
     case @front
-    when :north then @position[0] += 1
-    when :west  then @position[1] -= 1
-    when :south then @position[0] -= 1
-    when :east  then @position[1] += 1
+    when :north then @position[1] += 1
+    when :west  then @position[0] -= 1
+    when :south then @position[1] -= 1
+    when :east  then @position[0] += 1
     end
   end
 
   def where
-     print  @position
-     puts   @front
+     puts "position is: #{@position} direction is #{@front}"
      return @position + @front
 
   end
   
 end #robot end
 
+# used for terminal:
+# require "./robot_simulator"
 # r = Robot.new
 # r.place_at(7,3, "north")
 # r.instruct("RAALAL")
