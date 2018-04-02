@@ -6,7 +6,7 @@
 loop do
 
   def commas(num)
-    num = num.reverse.chars.each_slice(3).map(&:join).join(",").reverse
+    num = num.reverse.chars.each_slice(3)
   end
 
   #test questions
@@ -25,5 +25,5 @@ loop do
 
   puts "what number?"
   number = gets.chomp
-  puts commas(number)
+  p commas(number)
 end # loop is for checking many maual input numbers
