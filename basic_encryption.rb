@@ -59,8 +59,6 @@ if __FILE__ == $PROGRAM_NAME
   p rot("The Quick Brown Fox Jumps Over The Lazy Dog",13) ==
     "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt"
 
-  p rot("ahaaaa",0) ==
-    "ahaaaa"
 end
 
 
