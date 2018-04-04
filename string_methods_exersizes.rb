@@ -1,3 +1,4 @@
+=begin
 # 1. prepend the string "Learning " to the string "Ruby"
 p "Ruby".prepend("Learning ")
 
@@ -89,7 +90,7 @@ numbers.each do |x|
   end
 end
 p numbers.select { |x| x.even?}.reverse
-
+=end
 #9. create hash as seen below and print out "dos"
 dictionary = { :one => 'uno', :two => 'dos', :three => 'tres' }
   p dictionary[:two]
@@ -106,16 +107,16 @@ dictionary = { :one => 'uno', :two => 'dos', :three => 'tres' }
   puts dictionary[:four].capitalize
 
 # 12. There is a method on hashes that allows to check if a certain key is defined on the hash. 
- dictionary.key?(:one)
- dictionary.has_key?(:two)
+p dictionary.key?(:one)
+p dictionary.has_key?(:two)
 # => true
 # => true
     
 
 # 13. There is a method on hashes that flips keys and values. fill in the following line using that method:
 dictionary = { :one => 'uno', :two => 'dos', :three => 'tres' }
-dictionary.invert  
-p dictionary
+p dictionary.invert
+
 
 # output => { 'uno' => :one, 'dos' => :two, 'tres' => :three } 
     
@@ -137,6 +138,7 @@ greet("Daniel")
 # 15. Now change your method so that instead of always using "Hello " it picks a random string from 
 # the array ["Hello", "Hi", "Ohai", "ZOMG"].
  puts "-".rjust(19, "-")
+
 # 15 solution 1
 def greet(name)
   random = ["Hello", "Hi", "Ohai", "ZOMG"]
@@ -153,17 +155,21 @@ end
 greet("Daniel")
 
 
-
 # 16. Write a method that converts a distance (a number) from miles to kilometers:
     def miles_to_kilometers(miles)
       miles * 1.60934
     end
     puts miles_to_kilometers(25) # This should print out: 40.2336
-    
+  
+
+
+
 # 17. Write a method leap_year? that takes a year (a number), and calculates if it is a leap year.
   def leap_year?(year)
     (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0) 
   end
+
+
   p leap_year?(2012) # => true
   p leap_year?(2015) # => false
 #bonus years
@@ -177,20 +183,21 @@ words = ["one", "two", "three", "four", "five"]
 [3,1].each { |x| words.delete_at(x)} 
 p words
 
-# words = ["one", "two", "three", "four", "five"]
-# p ([4, 2, 0].each {|x| words.select.with_index(x)})
-    
-  
 # 19. Change your code to get :["One", "Three", "Five"] (capitalized)
-words = ["one", "two", "three", "four", "five"]
 words.each { |s| s.capitalize!} 
 p words
         
+
+
+
+
 # 20. Change your code to output: ["One <3", "Three <3", "Five <3"]  
-words = ["one", "two", "three", "four", "five"]
-words.each { |s| s.reverse! and s.prepend("3<").reverse! } 
-p words
+
+# 20 solution 1
+p words.each { |s| s.reverse! and s.prepend("3< ").reverse! } 
 
 
+# 20 solution 2
+words = ["One", "Three", "Five"] # reset words array
 
-
+p words.each { |s| s << " <3" }
