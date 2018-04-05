@@ -90,7 +90,7 @@ numbers.each do |x|
   end
 end
 p numbers.select { |x| x.even?}.reverse
-=end
+
 #9. create hash as seen below and print out "dos"
 dictionary = { :one => 'uno', :two => 'dos', :three => 'tres' }
   p dictionary[:two]
@@ -184,20 +184,195 @@ words = ["one", "two", "three", "four", "five"]
 p words
 
 # 19. Change your code to get :["One", "Three", "Five"] (capitalized)
-words.each { |s| s.capitalize!} 
+words.each { |x| x.capitalize!} 
 p words
         
-
-
-
-
 # 20. Change your code to output: ["One <3", "Three <3", "Five <3"]  
 
 # 20 solution 1
-p words.each { |s| s.reverse! and s.prepend("3< ").reverse! } 
+p words.each { |x| x.reverse! and x.prepend("3< ").reverse! } 
 
 
 # 20 solution 2
 words = ["One", "Three", "Five"] # reset words array
 
-p words.each { |s| s << " <3" }
+p words.each { |x| x << " <3" }
+
+#21. Change your code to output :["One <3", "Three <3<3<3", "Five <3<3<3<3<3"]
+words = ["one", "two", "three", "four", "five"]
+words.each { |x| x << " " + "<3" * (words.index(x) +1) and x.capitalize!}
+[3,1].each { |x| words.delete_at(x)} 
+p words
+
+
+# 22. Change your code  output "One <3, Three <3<3<3, Five <3<3<3<3<3" (string) 
+words = ["one", "two", "three", "four", "five"]
+words.each { |x| x << " " + "<3" * (words.index(x) +1) and x.capitalize!}
+[3,1].each { |x| words.delete_at(x)} 
+p words.join(", ")
+
+
+# 23. Change your code to output, using the newline character "\n":  
+#     One <3
+#     Three <3<3<3
+#     Five <3<3<3<3<3
+words = ["one", "two", "three", "four", "five"]
+words.each { |x| x << " " + "<3" * (words.index(x) +1) and x.capitalize! and x << "\n"}
+[3,1].each { |x| words.delete_at(x)} 
+print words.join
+
+
+
+# 24. Change your code to output, aligning the second column:
+#     One   <3
+#     Three <3<3<3
+#     Five  <3<3<3<3<3
+
+words = ["one", "two", "three", "four", "five"]
+words.each { |x| x.replace(x.ljust(7))}
+words.each { |x| x << "<3" * (words.index(x) +1) and x.capitalize! and x << "\n"}
+[3,1].each { |x| words.delete_at(x)} 
+print words.join
+    
+
+# 25. create array as below and then code to output:
+#     [6, 15, 24]
+numbers = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+  ]
+sums = []
+ 
+numbers.each do |array| 
+  array_sum = 0
+  array.each { |i| array_sum += i}
+  sums << array_sum
+end
+
+p sums
+    
+
+# 26. make array as below. 
+numbers = [
+  [1, 2, 3],
+  [2, 2, 2],
+  [3, 2, 1]
+  ]
+# Add code bellow to create output like:
+#     * ** ***
+#     ** ** **
+#     *** ** * 
+
+ numbers.each do |array| 
+  array.each do |i| 
+    array[array.find_index(i)] = "*" * i + " "
+  end   
+  array << "\n"
+end
+stars = numbers.join
+puts stars
+
+
+# 27. Create hashes as follows
+l = {
+  :de => 'German',
+  :en => 'English',
+  :es => 'Spanish',
+  }
+d = {
+  :de => { :one => 'eins', :two => 'zwei', :three => 'drei' },
+  :en => { :one => 'one', :two => 'two', :three => 'three' },
+  :es => { :one => 'uno', :two => 'dos', :three => 'tres' }
+  }
+    
+# Add code that prints out the following:
+#     In German, eins means one, zwei means two, drei means three.
+#     In Spanish, uno means one, duo means two, tres means three. 
+    # x = :de
+    #   puts "In #{l[x]}, #{d[x][:one]} means one, #{d[x][:two]} means two, #{d[x][:three]} means three"
+    # x = :es
+    #   puts "In #{l[x]}, #{d[x][:one]} means one, #{d[x][:two]} means two, #{d[x][:three]} means three"
+
+    
+# 28. Add code prints as shown below:    
+#     de eins zwei drei
+#     en one  two  three
+#     es uno  dos  tres
+table = ""
+d.each do |k, a| # k is key and a is the data
+  table << k.to_s.ljust(3)
+  a.each do |h,l| # h is key and l is the word
+    table << l.to_s.ljust(5)
+  end
+  table << "\n"
+end
+print table
+
+# 29. Change your code so that it adds delimiters:    
+#     | de | eins | zwei | drei  |
+#     | en | one  | two  | three |
+#     | es | uno  | dos  | tres  |
+    
+table = ""
+d.each do |k, a| 
+  table << "| " << k.to_s.ljust(3) << "| "
+  a.each do |h,l| 
+    table << l.to_s.ljust(6) << "| "
+  end
+  table << "\n"
+end
+print table
+
+=end
+
+# 30. This exercise is about validating what we’ve learned about truthiness.
+# You have the following array:
+#     objects = [true, false, 0, 1, "", [], Object.new, Class.new, Module.new]
+    
+# Add some code that outputs the following table. The last column should be filled in with 
+# by either true or false depending what the operation !!object, which is the same asnot 
+# not object` for each of the objects returns:
+#     object                     | !!object
+#     true                       | [true|false]
+#     false                      | [true|false]
+#     nil                        | [true|false]
+#     0                          | [true|false]
+#     1                          | [true|false]
+#     ""                         | [true|false]
+#     []                         | [true|false]
+#     #<Object:0x007fb3dc0ea1b8> | [true|false]
+#     #<Class:0x007fb3dc0e2cd8>  | [true|false]
+#     #<Module:0x007fb3dc0d9ea8> | [true|false] 
+    
+# You can use the method inspect in order to, for each of the values, get a representation 
+# that looks like the code.
+# Of course you will get different object ids for the object, class, and module instances 
+# everytime you run your code.
+    
+# So let’s prettify this table by removing the object ids. You can do this calling 
+# sub(/:.*>/, ">") on whatever inspect returns.   
+# Your table should now look like this:   
+# object    | !!object
+# true      | true
+# false     | false
+# nil       | false
+# 0         | true
+# 1         | true
+# ""        | true
+# []        | true
+# #<Object> | true
+# #<Class>  | true
+# #<Module> | true
+
+objects = [:object, true, false, 0, 1, "", [], Object.new, Class.new, Module.new]
+
+objects.each do |d| 
+truth = "maybe"
+  
+  view = d.to_s.sub(/:.*>/, ">").ljust(11) << "| " << "#{truth}"
+  puts view
+end
+
+
+

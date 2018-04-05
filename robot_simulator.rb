@@ -88,7 +88,8 @@ class Robot
   
 end #robot end
 
-# used for terminal:
+# # used for terminal:
+
 # require "./robot_simulator"
 # r = Robot.new
 # r.place_at(7,3, "north")
