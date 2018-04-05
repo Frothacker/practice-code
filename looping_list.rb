@@ -64,6 +64,19 @@ l.show(0)
 l.show(1)
 l.show(2)
 l.show(3)
+l.next
+l.next
+l.next
+l.next
+l.next
+l.next
+l.prev
+l.prev
+l.prev
+l.prev
+l.prev
+l.prev
+
 
 
 
