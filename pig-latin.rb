@@ -11,44 +11,16 @@
 
 
 def pig_latin(word)
-
   # do vowels
   x =  word.chars[0]
-  if x.include?("a") || x.include?("e") || x.include?("i") || x.include?("o") || x.include?("u")
-    puts word.delete(" ") << "ay"
+  if x =~ /[aeiou]/
+    puts word + "ay"
   else
-
-  # count consanants before vowel
-  switch = true
-  counter = 0
-  
-  until switch == false do
-    c = word.chars[counter]
-    if c =~ /a/ || c =~ /e/ || c =~ /i/ || c =~ /o/ || c =~ /u/ then
-      switch = false
-    elsif c != /a/ || c != /e/ || c != /i/ || c != /o/ || c != /u/ && c.length == 1 then
-      counter += 1
-    end
-  end #until end
-
+  m = word.index(/[aeiou]/)
   # get consonants before vowel
-  consonants = word.chars[(0..counter-1)].join
-  #remove those consonants
-  counter.times{ word = word.reverse.chop.reverse}
-  #re-arrange to make pig word
-  puts word + consonants << "ay"
+  puts word.chars.drop(m).join + word.chars[(0..m-1)].join + "ay"
   end # if end
 end
-
-pig_latin("happy")
-pig_latin("chicken")
-pig_latin("funny")
-pig_latin("into")
-pig_latin("away")
-pig_latin("emu")
-pig_latin("gloves")
-
-
 
 
 # if __FILE__ == $PROGRAM_NAME
@@ -60,3 +32,13 @@ pig_latin("gloves")
 #   p pig_latin("inbox") == "inboxay"
 #   p pig_latin("eight") == "eightay"
 # end
+# # remember to change "puts" to "return"
+
+
+pig_latin("happy")
+pig_latin("chicken")
+pig_latin("funny")
+pig_latin("into")
+pig_latin("away")
+pig_latin("emu")
+pig_latin("gloves")
