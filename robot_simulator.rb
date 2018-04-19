@@ -89,6 +89,8 @@ class Robot
   
 end #robot end
 
+      
+## used for testing inside termial
 # r = Robot.new
 # r.place_at(7,3, "north")
 # r.instruct("RAALAL")
